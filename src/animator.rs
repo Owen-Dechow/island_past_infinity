@@ -29,7 +29,6 @@ impl Animator {
     }
 
     pub fn apply_delta(&mut self, delta: Vec2, dt: f32) {
-
         if delta.x != 0.0 || delta.y != 0.0 {
             let delta_abs = delta.abs();
             if delta_abs.x >= delta_abs.y {
