@@ -1,7 +1,7 @@
 use std::{
     collections::{HashMap, HashSet},
     iter,
-    ops::RangeInclusive,
+    ops::Range,
     usize,
 };
 
@@ -19,7 +19,7 @@ use serde::{Deserialize, Serialize};
 use crate::{
     asset_loading::{deserialize, serialize, AssetManageResult},
     input::Input,
-    object::ObjectListing,
+    object::{LevelObjects, ObjectListing},
     tilesets::{TileAsset, TileAutoRule, TileLayer, TilesetAsset, TilesetAssetSerializable},
     utils::{alert, prompt, splitter},
     world::World,
@@ -164,23 +164,31 @@ impl Level {
         return Ok(new);
     }
 
-    fn get_showing_range(&self, world: &World) -> (RangeInclusive<usize>, RangeInclusive<usize>) {
+    fn get_showing_range(&self, world: &World) -> (Range<usize>, Range<usize>) {
         let num_rows = (world.h / TILE_SIZE).ceil() as usize;
         let num_cols = (world.w / TILE_SIZE).ceil() as usize;
 
         let first_row = (world.y / TILE_SIZE).floor() as usize;
         let first_col = (world.x / TILE_SIZE).floor() as usize;
 
-        let row_range = clamp(first_row, 0, self.rows)..=clamp(first_row + num_rows, 0, self.rows);
-        let col_range = clamp(first_col, 0, self.cols)..=clamp(first_col + num_cols, 0, self.cols);
+        let row_range =
+            clamp(first_row, 0, self.rows)..clamp(first_row + num_rows + 1, 0, self.rows);
+        let col_range =
+            clamp(first_col, 0, self.cols)..clamp(first_col + num_cols + 1, 0, self.cols);
 
         return (row_range, col_range);
     }
 
-    pub fn spawn_objects(&mut self, world: &World) {
+    pub fn spawn_objects(&mut self, world: &World, level_objects: &mut LevelObjects) {
         let (row_range, col_range) = self.get_showing_range(world);
-
-        for object in self.objects.iter().enumerate() {}
+        for (object_id, object) in self.objects.iter().enumerate() {
+            if object.is_in_range(&row_range, &col_range) {
+                if !self.spawned_objects.contains(&object_id) {
+                    self.spawned_objects.insert(object_id);
+                    level_objects.add_listing(object);
+                }
+            }
+        }
     }
 
     fn render_layer(&self, layer: &TileVec, world: &World, is_background: bool) {

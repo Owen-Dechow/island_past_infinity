@@ -35,6 +35,10 @@ impl Body {
         self.hitbox.y - world.y
     }
 
+    pub fn get_y_sort_key(&self) -> i32 {
+        (self.hitbox.bottom() * 100.0) as i32
+    }
+
     pub fn r#move(&mut self, delta: Vec2, level: &Level, dt: f32) {
         if let Some(ref mut animator) = self.animator {
             animator.apply_delta(delta, dt);

@@ -3175,11 +3175,13 @@
     ],
     "rows": 20,
     "cols": 20,
-    "enemies": [
+    "objects": [
         {
-            "type": "CopperOrb",
-            "row": 10,
-            "col": 10
+            "row": 2,
+            "col": 2,
+            "type": {
+                "Enemy": "PurpleBlob"
+            }
         }
     ]
 }

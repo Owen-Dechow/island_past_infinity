@@ -61,7 +61,7 @@ impl Animator {
         if self.time_moving > 0.0 || frame_span.duration_seconds == 0.0 {
             let prog = self.time_moving / frame_span.duration_seconds;
             frame = frame_span.start_frame
-                + (prog * frame_span.number_of_frames as f32).floor() as usize
+                + (prog * frame_span.number_of_frames as f32 + 1.0).floor() as usize
                     % frame_span.number_of_frames;
         } else {
             frame = frame_span.start_frame;

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::body::Body;
+use crate::{body::Body, world::World};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum EnemyType {
@@ -11,5 +11,19 @@ pub enum EnemyType {
 }
 
 pub struct Enemy {
-    obj: Body,
+    pub body: Body,
+    r#type: EnemyType,
+}
+
+impl Enemy {
+    pub fn new(r#type: EnemyType, x: f32, y: f32) -> Self {
+        return Enemy {
+            body: Body::new(x, y, 16.0, 16.0, None),
+            r#type,
+        };
+    }
+
+    pub fn render(&self, world: &World) {
+        self.body.render(world);
+    }
 }
