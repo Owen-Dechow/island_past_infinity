@@ -1,10 +1,7 @@
-use macroquad::{
-    file::load_file,
-    texture::{load_texture, Texture2D},
-};
+use macroquad::texture::Texture2D;
 use serde::{Deserialize, Serialize};
 
-use crate::resources::AssetLoadError;
+use crate::asset_loading::{load_tex_with_meta, AssetManageResult};
 
 #[derive(Serialize, Deserialize)]
 pub struct SpriteFrameSpan {
@@ -71,22 +68,9 @@ impl Sprite {
         }
     }
 
-    pub async fn load_player() -> Result<Self, AssetLoadError> {
+    pub async fn load_player() -> AssetManageResult<Sprite> {
         let path = format!("{}/player.png", Self::PATH);
-        let tex = load_texture(&path).await?;
-        tex.set_filter(macroquad::texture::FilterMode::Nearest);
-        let meta_path = format!("{path}.meta.json");
-
-        if !(std::fs::exists(&meta_path)?) {
-            std::fs::write(
-                &meta_path,
-                serde_json::to_string_pretty(&SpriteSerializable::default())?,
-            )?;
-        }
-
-        let serializable: SpriteSerializable =
-            serde_json::from_slice(&load_file(&meta_path).await?)?;
-
+        let (serializable, tex) = load_tex_with_meta(path).await?;
         return Ok(Self::load(serializable, tex).await);
     }
 }

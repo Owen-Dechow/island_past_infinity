@@ -1,20 +1,18 @@
 use macroquad::math::vec2;
 
 use crate::{
-    input::Input,
-    object::Object,
-    resources::{levels::Level, sprites::Sprite, AssetLoadError},
+    asset_loading::AssetManageResult, input::Input, levels::Level, body::Body, sprites::Sprite,
     world::World,
 };
 
 pub struct Player {
-    pub obj: Object,
+    pub obj: Body,
 }
 
 impl Player {
-    pub async fn new(world: &World) -> Result<Self, AssetLoadError> {
+    pub async fn new(world: &World) -> AssetManageResult<Self> {
         Ok(Self {
-            obj: Object::new(
+            obj: Body::new(
                 world.w / 2.0,
                 world.h / 2.0,
                 14.0,

@@ -4,7 +4,7 @@ use macroquad::{
     texture::{draw_texture_ex, DrawTextureParams},
 };
 
-use crate::resources::sprites::Sprite;
+use crate::sprites::Sprite;
 
 enum Direction {
     Up,

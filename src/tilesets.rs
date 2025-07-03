@@ -1,12 +1,12 @@
 use std::path::PathBuf;
 
-use macroquad::{
-    file::load_file,
-    texture::{load_texture, Image, Texture2D},
-};
+use macroquad::texture::{Image, Texture2D};
 use serde::{Deserialize, Serialize};
 
-use crate::{resources::AssetLoadError, TILE_COLLISION_SECTIONS, TILE_SIZE};
+use crate::{
+    asset_loading::{load_tex_with_meta, AssetManageResult},
+    TILE_COLLISION_SECTIONS, TILE_SIZE,
+};
 
 pub struct TilesetAsset {
     pub tex: Texture2D,
@@ -15,30 +15,19 @@ pub struct TilesetAsset {
 }
 
 impl TilesetAsset {
-    fn new(
-        serializable: TilesetAssetSerializable,
-        tex: Texture2D,
-        meta_path: PathBuf,
-    ) -> TilesetAsset {
+    fn new(serializable: TilesetAssetSerializable, tex: Texture2D) -> TilesetAsset {
         TilesetAsset {
             tex,
             tiles: serializable.tiles,
-            meta_path,
+            meta_path: serializable.meta_path,
         }
     }
 
-    pub async fn load(tile_asset: &str) -> Result<Self, AssetLoadError> {
+    pub async fn load(tile_asset: &str) -> AssetManageResult<Self> {
         let path = format!("assets/art/tiles/{}.png", tile_asset);
-        let tex = load_texture(&path).await?;
-        tex.set_filter(macroquad::texture::FilterMode::Nearest);
+        let (serializable, tex) = load_tex_with_meta(path).await?;
 
-        let meta_path = format!("{path}.meta.json");
-        let meta_file = load_file(&meta_path).await?;
-        let meta = String::from_utf8_lossy(&meta_file);
-
-        let serializable: TilesetAssetSerializable = serde_json::from_str(&meta)?;
-
-        return Ok(Self::new(serializable, tex, meta_path.into()));
+        return Ok(Self::new(serializable, tex));
     }
 
     pub fn get_tile_at_pos(&self, x: f32, y: f32) -> Option<usize> {
@@ -122,6 +111,7 @@ impl TilesetAsset {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct TilesetAssetSerializable {
     pub tiles: Vec<TileAsset>,
+    pub meta_path: PathBuf,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

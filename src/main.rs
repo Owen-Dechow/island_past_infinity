@@ -1,26 +1,31 @@
+mod animator;
+mod asset_loading;
+mod enemies;
 mod input;
+mod levels;
+mod body;
 mod player;
-mod resources;
+mod sprites;
+mod tilesets;
 mod utils;
 mod world;
-mod animator;
 mod object;
 
 use input::Input;
+use levels::LevelEditorSettings;
 use macroquad::{
     camera::{set_camera, set_default_camera, Camera2D},
     color::{BLACK, WHITE},
     math::{vec2, Rect},
     miniquad::conf::Platform,
     texture::{draw_texture_ex, render_target, DrawTextureParams, RenderTarget},
-    time::{draw_fps, get_frame_time},
+    time::get_frame_time,
     window::{clear_background, next_frame, screen_height, screen_width, Conf},
 };
 use player::Player;
-use resources::levels::LevelEditorSettings;
 use world::World;
 
-use crate::resources::levels::Level;
+use crate::levels::Level;
 
 const TILE_SIZE: f32 = 16 as f32;
 const TILE_COLLISION_SECTIONS: f32 = 3 as f32;
@@ -60,10 +65,6 @@ async fn main() {
         (VIRTUAL_H * SUB_PIX_LEVEL) as u32,
     );
 
-    render_target
-        .texture
-        .set_filter(macroquad::texture::FilterMode::Linear);
-
     let mut editor = LevelEditorSettings::new();
 
     loop {
@@ -89,6 +90,7 @@ async fn main() {
             render_target: Some(render_target.clone()),
             ..Default::default()
         });
+
         clear_background(BLACK);
 
         if editor.show_background {
@@ -129,8 +131,6 @@ async fn main() {
                 ..Default::default()
             },
         );
-
-        draw_fps();
 
         next_frame().await;
     }

@@ -1,3 +1,2033 @@
 {
-    "tiles": []
+  "tiles": [
+    {
+      "x": 240.0,
+      "y": 0.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 256.0,
+      "y": 0.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 272.0,
+      "y": 0.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 0.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 16.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 16.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 32.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 32.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 48.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 256.0,
+      "y": 48.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 272.0,
+      "y": 48.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 48.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 64.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 64.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 256.0,
+      "y": 64.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 272.0,
+      "y": 64.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 64.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 176.0,
+      "y": 80.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 80.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 80.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 80.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 176.0,
+      "y": 96.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 96.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 96.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 96.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 176.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 192.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 256.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 272.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 288.0,
+      "y": 112.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 80.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 128.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 80.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 224.0,
+      "y": 144.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 80.0,
+      "y": 160.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 160.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 160.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 224.0,
+      "y": 160.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 240.0,
+      "y": 160.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 80.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 208.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 224.0,
+      "y": 176.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 80.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 192.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 96.0,
+      "y": 208.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 208.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 128.0,
+      "y": 208.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 208.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 208.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 112.0,
+      "y": 224.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 144.0,
+      "y": 224.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 160.0,
+      "y": 224.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 176.0,
+      "y": 224.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "x": 192.0,
+      "y": 224.0,
+      "auto_rule": null,
+      "layer": "Object",
+      "group": null,
+      "collision_matrix": {
+        "matrix": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      }
+    }
+  ],
+  "meta_path": "assets/art/tiles/ship.png.meta.json"
 }

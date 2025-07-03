@@ -1,25 +1,26 @@
 use std::{
     collections::{HashMap, HashSet},
     iter,
+    ops::RangeInclusive,
+    usize,
 };
 
 use macroquad::{
     color::{Color, BLACK, DARKPURPLE, GRAY as GREY, RED, WHITE},
-    file::load_file,
     math::{clamp, vec2, Rect},
     shapes::{draw_line, draw_rectangle},
     text::draw_text,
     texture::{draw_texture_ex, DrawTextureParams},
     ui::root_ui,
 };
+
 use serde::{Deserialize, Serialize};
 
 use crate::{
+    asset_loading::{deserialize, serialize, AssetManageResult},
     input::Input,
-    resources::{
-        tilesets::{TileAsset, TileAutoRule, TileLayer, TilesetAsset, TilesetAssetSerializable},
-        AssetLoadError,
-    },
+    object::ObjectListing,
+    tilesets::{TileAsset, TileAutoRule, TileLayer, TilesetAsset, TilesetAssetSerializable},
     utils::{alert, prompt, splitter},
     world::World,
     TILE_COLLISION_SECTIONS, TILE_SIZE, VIRTUAL_H, VIRTUAL_W,
@@ -34,12 +35,14 @@ pub struct TilePointer(String, pub usize);
 
 #[derive(Serialize, Deserialize, Debug)]
 struct LevelSerializable {
-    background: TileVec,
-    object: TileVec,
-    overlay: TileVec,
+    background_layer: TileVec,
+    object_layer: TileVec,
+    overlay_layer: TileVec,
     rows: usize,
     cols: usize,
+    objects: Vec<ObjectListing>,
 }
+
 pub struct LevelEditorSettings {
     pub open: bool,
     selected_tileset: Option<String>,
@@ -100,9 +103,9 @@ impl TileHitInfo {
 macro_rules! get_tile_mut {
     ($level:expr, $layer_id:expr, $row:expr, $col:expr) => {
         match $layer_id {
-            TileLayer::Background => &mut $level.background,
-            TileLayer::Object => &mut $level.object,
-            TileLayer::Overlay => &mut $level.overlay,
+            TileLayer::Background => &mut $level.background_layer,
+            TileLayer::Object => &mut $level.object_layer,
+            TileLayer::Overlay => &mut $level.overlay_layer,
         }
         .get_mut($row)
         .expect("Row should exist")
@@ -115,31 +118,36 @@ pub struct Level {
     rows: usize,
     cols: usize,
     path: String,
-    background: TileVec,
-    object: TileVec,
-    overlay: TileVec,
+    background_layer: TileVec,
+    object_layer: TileVec,
+    overlay_layer: TileVec,
     tilesets: HashMap<String, TilesetAsset>,
+    objects: Vec<ObjectListing>,
+    spawned_objects: HashSet<usize>,
 }
 
 impl Level {
-    pub async fn load<'a>(level: &str) -> Result<Level, AssetLoadError> {
+    pub async fn load<'a>(level: &str) -> AssetManageResult<Level> {
         let path = format!("assets/levels/{}.json", level);
-        let serializable: LevelSerializable = serde_json::from_slice(&load_file(&path).await?)?;
+        let serializable: LevelSerializable = deserialize(&path)?;
+
         let mut new = Level {
-            background: serializable.background,
-            object: serializable.object,
-            overlay: serializable.overlay,
+            background_layer: serializable.background_layer,
+            object_layer: serializable.object_layer,
+            overlay_layer: serializable.overlay_layer,
             tilesets: HashMap::new(),
             rows: serializable.rows,
             cols: serializable.cols,
+            objects: serializable.objects,
+            spawned_objects: HashSet::new(),
             path,
         };
 
         let mut textures = HashSet::new();
-        for row in (&new.background)
+        for row in (&new.background_layer)
             .into_iter()
-            .chain(&new.object)
-            .chain(&new.overlay)
+            .chain(&new.object_layer)
+            .chain(&new.overlay_layer)
         {
             for ptr in row {
                 if let Some(ptr) = ptr {
@@ -156,17 +164,27 @@ impl Level {
         return Ok(new);
     }
 
+    fn get_showing_range(&self, world: &World) -> (RangeInclusive<usize>, RangeInclusive<usize>) {
+        let num_rows = (world.h / TILE_SIZE).ceil() as usize;
+        let num_cols = (world.w / TILE_SIZE).ceil() as usize;
+
+        let first_row = (world.y / TILE_SIZE).floor() as usize;
+        let first_col = (world.x / TILE_SIZE).floor() as usize;
+
+        let row_range = clamp(first_row, 0, self.rows)..=clamp(first_row + num_rows, 0, self.rows);
+        let col_range = clamp(first_col, 0, self.cols)..=clamp(first_col + num_cols, 0, self.cols);
+
+        return (row_range, col_range);
+    }
+
+    pub fn spawn_objects(&mut self, world: &World) {
+        let (row_range, col_range) = self.get_showing_range(world);
+
+        for object in self.objects.iter().enumerate() {}
+    }
+
     fn render_layer(&self, layer: &TileVec, world: &World, is_background: bool) {
-        let num_rows = (world.h / TILE_SIZE).ceil() as i32;
-        let num_cols = (world.w / TILE_SIZE).ceil() as i32;
-
-        let first_row = (world.y / TILE_SIZE).floor() as i32;
-        let first_col = (world.x / TILE_SIZE).floor() as i32;
-
-        let row_range = clamp(first_row, 0, self.rows as i32)
-            ..clamp(first_row + num_rows + 1, 0, self.rows as i32);
-        let col_range = clamp(first_col, 0, self.cols as i32)
-            ..clamp(first_col + num_cols + 1, 0, self.cols as i32);
+        let (row_range, col_range) = self.get_showing_range(world);
 
         for row in row_range {
             for col in col_range.clone() {
@@ -201,22 +219,22 @@ impl Level {
     }
 
     pub fn render_background(&self, world: &World) {
-        self.render_layer(&self.background, world, true);
+        self.render_layer(&self.background_layer, world, true);
     }
 
     pub fn render_object_layer(&self, world: &World) {
-        self.render_layer(&self.object, world, false);
+        self.render_layer(&self.object_layer, world, false);
     }
 
     pub fn render_overlay(&self, world: &World) {
-        self.render_layer(&self.overlay, world, false);
+        self.render_layer(&self.overlay_layer, world, false);
     }
 
     pub fn get_layer(&self, layer: &TileLayer) -> &TileVec {
         match layer {
-            TileLayer::Background => &self.background,
-            TileLayer::Object => &self.object,
-            TileLayer::Overlay => &self.overlay,
+            TileLayer::Background => &self.background_layer,
+            TileLayer::Object => &self.object_layer,
+            TileLayer::Overlay => &self.overlay_layer,
         }
     }
 
@@ -224,7 +242,7 @@ impl Level {
         let row = (y / TILE_SIZE).floor();
         let col = (x / TILE_SIZE).floor();
 
-        let tile_ptr = match self.object.get(row as usize) {
+        let tile_ptr = match self.object_layer.get(row as usize) {
             Some(row) => match row.get(col as usize) {
                 Some(tile) => match tile {
                     Some(tile) => tile,
@@ -267,15 +285,12 @@ impl Level {
         editor_y: f32,
         input: &Input,
         dt: f32,
-    ) -> Result<(), AssetLoadError> {
+    ) -> AssetManageResult<()> {
         if let Some(tileset_id) = &editor.selected_tileset {
             if root_ui().button(None, "Save Tileset Data") {
                 if let Some(tileset_id) = &editor.selected_tileset {
                     let serializable = self.tileset_to_serializable(&tileset_id);
-                    let msg = match std::fs::write(
-                        &self.tilesets[tileset_id].meta_path,
-                        serde_json::to_string_pretty(&serializable)?,
-                    ) {
+                    let msg = match serialize(&serializable, &self.tilesets[tileset_id].meta_path) {
                         Ok(_) => "Meta Saved",
                         Err(err) => &format!("{err}"),
                     };
@@ -392,14 +407,10 @@ impl Level {
         draw_line(0.0, editor_y, editor_width, editor_y, 1.0, WHITE);
     }
 
-    async fn editor_panel(
-        &mut self,
-        editor: &mut LevelEditorSettings,
-    ) -> Result<(), AssetLoadError> {
+    async fn editor_panel(&mut self, editor: &mut LevelEditorSettings) -> AssetManageResult<()> {
         if root_ui().button(None, "Save Level") {
             let serializable = self.to_serializable();
-            let msg = match std::fs::write(&self.path, serde_json::to_string_pretty(&serializable)?)
-            {
+            let msg = match serialize(&serializable, &self.path) {
                 Ok(_) => "Level Saved",
                 Err(err) => &format!("{err}"),
             };
@@ -418,27 +429,27 @@ impl Level {
                             self.rows = rows;
                             self.cols = cols;
 
-                            for row in self.background.iter_mut() {
+                            for row in self.background_layer.iter_mut() {
                                 row.resize_with(cols, || None);
                             }
 
-                            self.background.resize_with(rows, || {
+                            self.background_layer.resize_with(rows, || {
                                 iter::repeat_with(|| None).take(cols).collect()
                             });
 
-                            for row in self.object.iter_mut() {
+                            for row in self.object_layer.iter_mut() {
                                 row.resize_with(cols, || None);
                             }
 
-                            self.object.resize_with(rows, || {
+                            self.object_layer.resize_with(rows, || {
                                 iter::repeat_with(|| None).take(cols).collect()
                             });
 
-                            for row in self.overlay.iter_mut() {
+                            for row in self.overlay_layer.iter_mut() {
                                 row.resize_with(cols, || None);
                             }
 
-                            self.overlay.resize_with(rows, || {
+                            self.overlay_layer.resize_with(rows, || {
                                 iter::repeat_with(|| None).take(cols).collect()
                             });
                         }
@@ -629,7 +640,13 @@ impl Level {
         }
     }
 
-    fn place_tile(&mut self, row: usize, col: usize, editor: &LevelEditorSettings, auto_tile: bool) {
+    fn place_tile(
+        &mut self,
+        row: usize,
+        col: usize,
+        editor: &LevelEditorSettings,
+        auto_tile: bool,
+    ) {
         if let (Some(tileset_id), Some(tile_id)) = (&editor.selected_tileset, editor.selected_tile)
         {
             if auto_tile {
@@ -653,36 +670,21 @@ impl Level {
             }
         } else {
             if editor.show_background {
-                *self
-                    .background
-                    .get_mut(row)
-                    .expect("Row should exist")
-                    .get_mut(col)
-                    .expect("Col will exist") = None;
+                *get_tile_mut!(self, TileLayer::Background, row, col) = None;
                 if auto_tile {
                     self.set_surrounding_tiles(row, col, &TileLayer::Background);
                 }
             }
 
             if editor.show_object {
-                *self
-                    .object
-                    .get_mut(row)
-                    .expect("Row should exist")
-                    .get_mut(col)
-                    .expect("Col will exist") = None;
+                *get_tile_mut!(self, TileLayer::Object, row, col) = None;
                 if auto_tile {
                     self.set_surrounding_tiles(row, col, &TileLayer::Object);
                 }
             }
 
             if editor.show_overlay {
-                *self
-                    .overlay
-                    .get_mut(row)
-                    .expect("Row should exist")
-                    .get_mut(col)
-                    .expect("Col will exist") = None;
+                *get_tile_mut!(self, TileLayer::Overlay, row, col) = None;
                 if auto_tile {
                     self.set_surrounding_tiles(row, col, &TileLayer::Overlay);
                 }
@@ -966,7 +968,7 @@ impl Level {
         input: &Input,
         dt: f32,
         world: &World,
-    ) -> Result<(), AssetLoadError> {
+    ) -> AssetManageResult<()> {
         let editor_width = VIRTUAL_W / 3.0;
         let editor_y = VIRTUAL_H - editor_width;
 
@@ -987,17 +989,19 @@ impl Level {
 
     fn to_serializable(&self) -> LevelSerializable {
         LevelSerializable {
-            background: self.background.clone(),
-            object: self.object.clone(),
-            overlay: self.overlay.clone(),
+            background_layer: self.background_layer.clone(),
+            object_layer: self.object_layer.clone(),
+            overlay_layer: self.overlay_layer.clone(),
             rows: self.rows,
             cols: self.cols,
+            objects: self.objects.clone(),
         }
     }
 
     fn tileset_to_serializable(&self, tileset_id: &String) -> TilesetAssetSerializable {
         TilesetAssetSerializable {
             tiles: self.tilesets[tileset_id].tiles.clone(),
+            meta_path: self.tilesets[tileset_id].meta_path.clone(),
         }
     }
 }
